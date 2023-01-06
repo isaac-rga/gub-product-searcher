@@ -48,7 +48,7 @@ const Products = () => {
 
   const filterItemsWith = (queryParam) => {
     const filteredItems = items.map(item => {
-      if (!item.name.toLowerCase().includes(queryParam)) {
+      if (!item.name.toLowerCase().includes(queryParam.toLowerCase())) {
         item.display = false;
       } else {
         item.display = true;
@@ -85,7 +85,7 @@ const Products = () => {
         <Grid container spacing={2} >
           {items.map((gown, index) => {
             return (
-              <Grid item lg={3} md={4} sm={6} xs={12} key={index} display={gown.display ? 'block' : 'none'}>
+              <Grid item lg={3} md={4} sm={6} xs={12} key={index} display={gown.display ? 'flex' : 'none'}>
                 <GownCard gown={gown}/>
               </Grid>
             )
