@@ -85,7 +85,7 @@ const Products = () => {
         <Grid container spacing={2} >
           {items.map((gown, index) => {
             return (
-              <Grid item lg={3} md={4} sm={6} xs={12} key={index} display={gown.display ? 'flex' : 'none'}>
+              <Grid item lg={3} md={4} sm={6} xs={12} key={index} display={gown.display ? 'block' : 'none'}>
                 <GownCard gown={gown}/>
               </Grid>
             )
