@@ -56,41 +56,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Toolbar = () => {
   const [q, setQ] = useState("");
-  const [searchParam] = useState(["capital", "name", "numericCode"]);
-  const [filterParam, setFilterParam] = useState(["All"]);
-  const { setQueryParam } = useContext(GlobalContext);
-  const searchb = (items) => {
-    return items.filter((item) => {
-        if (item.region == filterParam) {
-            return searchParam.some((newItem) => {
-                return (
-                    item[newItem]
-                        .toString()
-                        .toLowerCase()
-                        .indexOf(q.toLowerCase()) > -1
-                );
-            });
-        } else if (filterParam == "All") {
-            return searchParam.some((newItem) => {
-                return (
-                    item[newItem]
-                        .toString()
-                        .toLowerCase()
-                        .indexOf(q.toLowerCase()) > -1
-                );
-            });
-        }
-    });
-}
+  const { setQueryParam, basket } = useContext(GlobalContext);
 
   useEffect(() => {
     setQueryParam(q)
   }, [q])
 
   return (
-    <GlobalContext.Consumer>
-      {(value) => {
-        return (
           <Box sx={{mb:10}}>
             <AppBar position="fixed" >
             <Container disableGutters>
@@ -102,7 +74,7 @@ const Toolbar = () => {
                   aria-label="open drawer"
                   sx={{ mr: 2 }}
                 >
-                  <Badge badgeContent={value.basket} color="error">
+                  <Badge badgeContent={basket} color="error">
                     <ShoppingBasketIcon />
                   </Badge>
                 </IconButton>
@@ -134,9 +106,6 @@ const Toolbar = () => {
             </Container>
             </AppBar>
           </Box>
-        );
-      }}
-    </GlobalContext.Consumer>
   );
 }
 

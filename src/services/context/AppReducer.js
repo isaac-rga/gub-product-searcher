@@ -69,12 +69,12 @@ export default function appReducer(state, action) {
     case 'INCREMENT_BASKET':
       return {
         ...state,
-        basket: state.basket++,
+        basket: state.basket + 1,
       };
     case 'DECREMENT_BASKET':
       return {
         ...state,
-        basket: state.basket--,
+        basket: state.basket - 1,
       };
     case 'SET_PRODUCTS':
       return {
